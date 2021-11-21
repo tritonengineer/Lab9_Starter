@@ -102,6 +102,100 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+
+    document.addEventListener('click', e => {
+      if(e.target.innerHTML == 'Console Log') {
+        console.log('The console log button was clicked.');
+      }
+    });
+
+    document.addEventListener('click', e => {
+      if(e.target.innerHTML == 'Console Error') {
+        console.error('There was an error that occurred.');
+      }
+    });
+
+    document.addEventListener('click', e => {
+      if(e.target.innerHTML == 'Console Count') {
+        console.count('Console Count Button');
+      }
+    });
+
+    document.addEventListener('click', e => {
+      if(e.target.innerHTML == 'Console Warn') {
+        console.warn('This is a warning.');
+      }
+    });
+
+    document.addEventListener('click', e => {
+      if(e.target.innerHTML == 'Console Assert') {
+        console.assert(19 < 16, {x: 19, y: 16 , reason:'19 is not less than 16'});
+      }
+    });
+
+    document.addEventListener('click', e => {
+      if(e.target.innerHTML == 'Console Clear') {
+        console.clear();
+      }
+    });
+
+    document.addEventListener('click', e => {
+      if(e.target.innerHTML == 'Console Dir') {
+        console.dir(document.head);
+      }
+    });
+
+    document.addEventListener('click', e => {
+      if(e.target.innerHTML == 'Console dirxml') {
+        console.dirxml(document);
+      }
+    });
+
+    document.addEventListener('click', e => {
+      if(e.target.innerHTML == 'Console Group Start') {
+        console.group('Numbers');
+        console.log('1');
+        console.log('2');
+        console.log('3');
+        console.log('4');
+        console.log('5');
+      }
+    });
+
+    document.addEventListener('click', e => {
+      if(e.target.innerHTML == 'Console Group End') {
+        console.groupEnd('Numbers');
+      }
+    });
+
+    document.addEventListener('click', e => {
+      if(e.target.innerHTML == 'Console Table') {
+        console.table([{Number:'1', Letter: 'A'}, {Number:'2', Letter: 'B'}]);
+      }
+    });
+
+    document.addEventListener('click', e => {
+      if(e.target.innerHTML == 'Start Timer') {
+        console.time();
+      }
+    });
+
+    document.addEventListener('click', e => {
+      if(e.target.innerHTML == 'End Timer') {
+        console.timeEnd();
+      }
+    });
+
+    document.addEventListener('click', e => {
+      if(e.target.innerHTML == 'Console Trace') {
+        const red = () => { orange(); };
+        const orange = () => { yellow(); };
+        const yellow = () => { green(); };
+        const green = () => { console.trace(); };
+        red();
+      }
+    });
+
   </script>
 </body>
 
