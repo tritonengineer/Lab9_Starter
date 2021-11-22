@@ -87,7 +87,22 @@
     </section>
   </main>
 
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
   <script>
+    window.TrackJS && TrackJS.install({ 
+    token: "c36056783ebe4db78c36bd759d204bf3"
+    // for more configuration options, see https://docs.trackjs.com
+  });
+  </script>
+                        
+  <script>
+    class CalculatorInputError extends Error {
+      constructor(message) {
+        super(message);
+        this.name = 'Calculator Input Error';
+      }
+    }
+    
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
       e.preventDefault();
@@ -95,7 +110,21 @@
       let firstNum = document.querySelector('#first-num').value;
       let secondNum = document.querySelector('#second-num').value;
       let operator = document.querySelector('#operator').value;
-      output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+
+      if(firstNum == '' || secondNum == '') {
+        throw new CalculatorInputError('Empty Input');
+      }
+
+      try {
+        output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+      }
+      catch(err) {
+        throw new SyntaxError('Invalid Input');
+      }
+      finally {
+        alert('There was an attempt to make a calculation.');
+      }
+      
     });
 
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
@@ -196,6 +225,13 @@
       }
     });
 
+    document.addEventListener('click', e => {
+      if(e.target.innerHTML == 'Trigger a Global Error') {
+        console.log('A global error has occurred.');
+        present('Global Error');
+      }
+    });
+    
   </script>
 </body>
 
